@@ -1,3 +1,4 @@
+#Warn
 
 #Include "CapsLock.ahk"
 #Include "Misc Hotkeys.ahk"
