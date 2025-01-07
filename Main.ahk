@@ -4,6 +4,7 @@
 #Include "MainConfig.ahk"
 
 ;--Hotkeys--
+#Include "AutoCorrect.ahk"
 #Include "CapsLock.ahk"
 #Include "Misc Hotkeys.ahk"
 
