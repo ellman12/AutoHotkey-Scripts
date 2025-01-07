@@ -1,0 +1,134 @@
+;Default behavior of macro buttons on Scimitar Pro and K95.
+;If desired, any or all of these hotkeys can be overriden by wrapping them in an #if.
+
+;----------------------------------------MOUSE ACTIONS---------------------------------------
+;G1: Horizontal scroll
+F13 & WheelUp::Send("{WheelLeft}")
+F13 & WheelDown::Send("{WheelRight}")
+
+;G2: Ctrl + Tab. Some programs let this work like Alt + Tab.
+F14::Send("^{Tab}")
+
+;G3: Faster vertical scrolling
+F15 & WheelUp::Send("{WheelUp 8}")
+F15 & WheelDown::Send("{WheelDown 8}")
+
+;Makes the mouse move faster while G3 and the Right Mouse Button are held down.
+F15 & RButton::
+{
+	DllCall("SystemParametersInfo", "Int", 113, "Int", 0, "UInt", 17, "Int", 1)
+	KeyWait("RButton")
+	DllCall("SystemParametersInfo", "Int", 113, "Int", 0, "UInt", 10, "Int", 1)
+}
+
+;G4: New tab
+F16::Send("^t")
+
+;G5: Tab to the right
+F17::Send("^{PgDn}")
+
+;G6: Forward in history
+F18::Send("!{Right}")
+
+;G7: Close tab
+F19::Send("^{w}")
+
+;G8: Tab to the left
+F20::Send("^{PgUp}")
+
+;G9: Backwards in history
+F21::Send("!{Left}")
+
+;G10: Alt + Tab
+F22::Send("!{Tab}")
+
+;G11: Minimize the current active window
+F23::WinMinimize("A")
+
+;G12: Restore previously closed tab
++F23::Send("^+{t}")
+
+;TODO: These seriously need a use.
+^!F23::return
+
+^+F23::return
+
+;----------------------------------------KEYBOARD ACTIONS---------------------------------------
+;G1: Firefox windows
+^F13::switchBetweenWindows("firefox", "C:/Program Files/Mozilla Firefox/firefox.exe")
+^+F13::Run("firefox.exe -private-window")
+
+;G2: Code editors
+^F14::
+{
+	group := "codeWindows"
+	GroupAdd(group, "ahk_exe rider64.exe")
+	GroupAdd(group, "ahk_exe webstorm64.exe")
+	GroupAdd(group, "ahk_exe Neovim.exe")
+	GroupAdd(group, "Neovim")
+	GroupActivate(group, "R")
+}
+
+;G3: Windows Terminal
+^F15::switchBetweenWindows("WindowsTerminal", "C:/Users/" . A_UserName . "/Shortcuts/Terminal.lnk")
+
+;G4: Chrome
+^F16::switchBetweenWindows("chrome", "C:/Program Files/Google/Chrome/Application/chrome.exe")
+^+F16::Run("chrome.exe -incognito")
+
+;G5
+^F17::Send("^{PgUp}")
+
+;G6
+^F18::Send("^{PgDn}")
+
+;G7: MS To Do
+^F19::switchBetweenWindows("ApplicationFrameHost", "C:/Users/" . A_UserName . "/Shortcuts/Microsoft To Do.lnk")
+
+;G8: Discord or MS Teams
+^F20::
+{
+	if (WorkComputer) {
+		WinShow("ahk_exe Teams.exe")
+		switchBetweenWindows("teams", "C:/Users/" . A_UserName . "/AppData/Local/Microsoft/Teams/Update.exe")
+	} else {
+		WinShow("ahk_exe Discord.exe")
+		switchBetweenWindows("discord", "C:/Users/" . A_UserName . "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Discord Inc/Discord.lnk")
+	}
+}
+
+;G9: File Explorer
+^F21::switchBetweenExplorerWins()
+
+;G10: Neovim
+^F22::switchBetweenWindows("nvim", "nvim.exe")
+
+;G11: Close tab
+^F23::Send("^w")
+
+;G12: New tab
+!F23::Send("^t")
+
+;G13: Close Virtual Desktop
+!F13::Send("^#{F4}")
+
+;G14: New VD
+!F14::Send("^#d")
+
+;G15
+!F15::WinMinimize("A")
+
+;G16: MusicBee
+!F16::switchBetweenWindows("MusicBee", "C:/Program Files (x86)/MusicBee/MusicBee.exe")
+
+;G17: Previous VD
+!F17::Send("^#{Left}")
+
+;G18: Next VD
+!F18::Send("^#{Right}")
+
+;M1, M2, and M3: Copy, cut, and paste
++F24::Send("^c")
++F21::Send("^x")
++F22::Send("^v")
+
