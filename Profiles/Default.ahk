@@ -57,6 +57,8 @@ F23::WinMinimize("A")
 ;G1: Firefox windows
 ^F13::switchBetweenWindows("firefox", "C:/Program Files/Mozilla Firefox/firefox.exe")
 ^+F13::Run("firefox.exe -private-window")
+^#F13::searchForSelection("firefox.exe", "", "https://www.google.com/search?&q=")
+^#+F13::searchForSelection("firefox.exe", "-private-window", "https://www.google.com/search?q=")
 
 ;G2: Code editors
 ^F14::
@@ -75,6 +77,8 @@ F23::WinMinimize("A")
 ;G4: Chrome
 ^F16::switchBetweenWindows("chrome", "C:/Program Files/Google/Chrome/Application/chrome.exe")
 ^+F16::Run("chrome.exe -incognito")
+^#F16::searchForSelection("chrome.exe", "", "https://www.google.com/search?q=")
+^#+F16::searchForSelection("chrome.exe", "--incognito", "https://www.google.com/search?q=")
 
 ;G5
 ^F17::Send("^{PgUp}")
