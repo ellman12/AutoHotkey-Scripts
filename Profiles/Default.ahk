@@ -54,58 +54,35 @@ F23::WinMinimize("A")
 ^+F23::return
 
 ;----------------------------------------KEYBOARD ACTIONS---------------------------------------
-;G1: Firefox windows
-^F13::switchBetweenWindows("firefox", "C:/Program Files/Mozilla Firefox/firefox.exe")
-^+F13::Run("firefox.exe -private-window")
-^#F13::searchForSelection("firefox.exe", "", "https://www.google.com/search?&q=")
-^#+F13::searchForSelection("firefox.exe", "-private-window", "https://www.google.com/search?q=")
+;G1
+^F13::Run("firefox.exe -private-window")
 
-;G2: Code editors
-^F14::
-{
-	group := "codeWindows"
-	GroupAdd(group, "ahk_exe rider64.exe")
-	GroupAdd(group, "ahk_exe webstorm64.exe")
-	GroupAdd(group, "ahk_exe Neovim.exe")
-	GroupAdd(group, "Neovim")
-	GroupActivate(group, "R")
-}
+;G2
+^F14::searchForSelection("firefox.exe", "", "https://www.google.com/search?&q=")
 
-;G3: Windows Terminal
-^F15::switchBetweenWindows("WindowsTerminal", "C:/Users/" . A_UserName . "/Shortcuts/Terminal.lnk")
+;G3
+^F15::searchForSelection("firefox.exe", "-private-window", "https://www.google.com/search?q=")
 
-;G4: Chrome
-^F16::switchBetweenWindows("chrome", "C:/Program Files/Google/Chrome/Application/chrome.exe")
-^+F16::Run("chrome.exe -incognito")
-^#F16::searchForSelection("chrome.exe", "", "https://www.google.com/search?q=")
-^#+F16::searchForSelection("chrome.exe", "--incognito", "https://www.google.com/search?q=")
+;G4
+^F16::Run("chrome.exe -incognito")
 
 ;G5
-^F17::Send("^{PgUp}")
+^F17::searchForSelection("chrome.exe", "", "https://www.google.com/search?q=")
 
 ;G6
-^F18::Send("^{PgDn}")
+^F18::searchForSelection("chrome.exe", "--incognito", "https://www.google.com/search?q=")
 
 ;G7: MS To Do
 ^F19::switchBetweenWindows("ApplicationFrameHost", "C:/Users/" . A_UserName . "/Shortcuts/Microsoft To Do.lnk")
 
-;G8: Discord or MS Teams
-^F20::
-{
-	if (WorkComputer) {
-		WinShow("ahk_exe Teams.exe")
-		switchBetweenWindows("teams", "C:/Users/" . A_UserName . "/AppData/Local/Microsoft/Teams/Update.exe")
-	} else {
-		WinShow("ahk_exe Discord.exe")
-		switchBetweenWindows("discord", "C:/Users/" . A_UserName . "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Discord Inc/Discord.lnk")
-	}
-}
+;G8
+^F20::return
 
-;G9: File Explorer
-^F21::switchBetweenExplorerWins()
+;G9
+^F21::return
 
-;G10: Neovim
-^F22::switchBetweenWindows("nvim", "nvim.exe")
+;G10
+^F22::return
 
 ;G11: Close tab
 ^F23::Send("^w")

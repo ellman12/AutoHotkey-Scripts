@@ -7,6 +7,7 @@
 #Include "AutoCorrect.ahk"
 #Include "CapsLock.ahk"
 #Include "Misc Hotkeys.ahk"
+#Include "NumPad.ahk"
 
 ;----Profiles----
 #Include "Profiles/WindowSwitching.ahk"

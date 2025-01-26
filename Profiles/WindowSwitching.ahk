@@ -15,6 +15,15 @@ switchBetweenWindows(exeName, exePath) {
 	}
 }
 
+switchBetweenCodeWindows() {
+	group := "codeWindows"
+	GroupAdd(group, "ahk_exe rider64.exe")
+	GroupAdd(group, "ahk_exe webstorm64.exe")
+	GroupAdd(group, "ahk_exe Neovim.exe")
+	GroupAdd(group, "Neovim")
+	GroupActivate(group, "R")
+}
+
 ;ahk_class is necessary because the taskbar, etc. are also part of explorer.exe
 switchBetweenExplorerWins() {
 	if !WinExist("ahk_class CabinetWClass")
@@ -22,6 +31,16 @@ switchBetweenExplorerWins() {
 
     GroupAdd("explorerWins", "ahk_class CabinetWClass")
 	GroupActivate("explorerWins", "R")
+}
+
+switchToMessengerApp() {
+	if (WorkComputer) {
+		WinShow("ahk_exe Teams.exe")
+		switchBetweenWindows("teams", "C:/Users/" . A_UserName . "/AppData/Local/Microsoft/Teams/Update.exe")
+	} else {
+		WinShow("ahk_exe Discord.exe")
+		switchBetweenWindows("discord", "C:/Users/" . A_UserName . "/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Discord Inc/Discord.lnk")
+	}
 }
 
 searchForSelection(browser, flags, url) {
