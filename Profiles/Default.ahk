@@ -48,10 +48,9 @@ F23::WinMinimize("A")
 ;G12: Restore previously closed tab
 +F23::Send("^+{t}")
 
-;TODO: These seriously need a use.
-^!F23::return
+^!F23::Send("!{Esc}")
 
-^+F23::return
+^+F23::Send("#{Tab}")
 
 ;----------------------------------------KEYBOARD ACTIONS---------------------------------------
 ;G1
