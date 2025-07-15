@@ -1,8 +1,5 @@
 ^#r::Reload
 
-SC29::Send("!{Tab}")
-^SC29::Send("{SC29}")
-
 !-::WinMinimize("A")
 !=::WinMaximize("A")
 

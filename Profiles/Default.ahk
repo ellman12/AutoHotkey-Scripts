@@ -112,3 +112,5 @@ F23::WinMinimize("A")
 +F21::Send("^x")
 +F22::Send("^v")
 
+F1::Send("!{Tab}")
+
