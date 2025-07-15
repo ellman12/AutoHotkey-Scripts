@@ -4,10 +4,10 @@
 #Include "MainConfig.ahk"
 
 ;--Hotkeys--
-#Include "AutoCorrect.ahk"
-#Include "CapsLock.ahk"
-#Include "Misc Hotkeys.ahk"
-#Include "NumPad.ahk"
+#Include "Hotkeys/AutoCorrect.ahk"
+#Include "Hotkeys/CapsLock.ahk"
+#Include "Hotkeys/Misc Hotkeys.ahk"
+#Include "Hotkeys/NumPad.ahk"
 
 ;----Profiles----
 #Include "Profiles/WindowSwitching.ahk"
