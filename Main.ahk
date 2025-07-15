@@ -1,4 +1,5 @@
 #Warn
+#SingleInstance Force
 
 ;--Auto-execute--
 #Include "MainConfig.ahk"
