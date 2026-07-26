@@ -37,7 +37,6 @@
 ::hasnt::hasn't
 ::havent::haven't
 ::hed::he'd
-::hell::he'll
 ::heres::here's
 ::hes::he's
 ::howd::how'd
