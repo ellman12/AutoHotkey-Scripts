@@ -1,3 +1,8 @@
+!c::{
+	global
+	capitalizeFirstLetters := !capitalizeFirstLetters
+}
+
 ;-------------------------------------------------------------------------------
 ;  Capitalise dates
 ;-------------------------------------------------------------------------------
@@ -86,6 +91,7 @@
 ::youve::you've
 
 ;Automatically capitalize first letter of next word after a punctuation mark.
+#HotIf capitalizeFirstLetters
 :*c?:. a::. A
 :*c?:. b::. B
 :*c?:. c::. C
@@ -166,4 +172,5 @@
 :*c?:! x::! X
 :*c?:! y::! Y
 :*c?:! z::! Z
+#HotIf
 
